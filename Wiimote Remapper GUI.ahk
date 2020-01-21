@@ -1,6 +1,6 @@
 ﻿;~ *********************************************************************************************************************
 ;~ |    Author: elModo7                                                                                                |
-;~ |    Description: Allows for bluetooth connected Wiimote controllers to quickly remapp its buttons to AHK functions.|
+;~ |    Description: Allows for bluetooth connected Wiimote controllers to quickly remap its buttons to AHK functions. |
 ;~ |    Version: 0.1                                                                                                   |
 ;~ |    Credits: AHKHID - An AHK implementation of the HID functions by TheGood.                                       |
 ;~ |                                                                                                                   |
