@@ -39,6 +39,8 @@ Gui +LastFound -Resize -MaximizeBox
 Gui Add, Button, x3 y536 w80 h23 glimpiar, CLEAR
 Gui Add, Button, x91 y536 w80 h23 gcancelar, CANCEL
 Gui Add, Button, x179 y536 w80 h23 gguardar, SAVE
+Gui Add, Button, x3 y562 w80 h23 gcargarPerfil, LOAD Profile
+Gui Add, Button, x91 y562 w80 h23 gguardarPerfil, SAVE Profile
 Gui Font, c0x0000FF
 Gui Add, Text, vtxt x264 y536 w197 h23 +0x200 +Right
 Gui Font
@@ -76,7 +78,7 @@ Gui Tab
 Gui Tab, 11                               
 Gui Add, Edit, x0 y21 w465 h508 geditHome veditHome
 Gui Tab
-Gui Show, w465 h564, Wiimote Gui Remapper
+Gui Show, w465 h590, Wiimote Gui Remapper
 GuiControl, Text, editA, % editA
 GuiControl, Text, editB, % editB
 GuiControl, Text, edit1, % edit1
@@ -311,6 +313,40 @@ cancelar:
 		GuiControl, Text, editLeft, % editLeft
 	else if(pestanya = "Right")
 		GuiControl, Text, editRight, % editRight
+return
+
+cargarPerfil:
+    InputBox, nombrePerfil, Profile Name, Insert the name of the profile you want to load
+    if(Trim(nombrePerfil) != "")
+    {
+        if FileExist("profiles\" nombrePerfil)
+        {
+            FileCopyDir, profiles/%nombrePerfil%, btn, 1
+            Reload
+        }
+        else
+        {
+            MsgBox 0x10, ERROR, Selected profile does not exist!
+        }
+    }
+return
+
+guardarPerfil:
+    InputBox, nombrePerfil, Profile Name, Insert the name of the profile you want to use for this buttons
+    if(Trim(nombrePerfil) != "")
+    {
+        if FileExist("profiles\" nombrePerfil)
+        {
+            MsgBox 0x34, Caution, This profile already exists`, do you want to overwrite it?
+            IfMsgBox Yes, {
+                FileCopyDir, btn, profiles/%nombrePerfil%, 1
+            }
+        }
+        else
+        {
+            FileCopyDir, btn, profiles/%nombrePerfil%, 1
+        }
+    }
 return
 
 ^+r::

@@ -1,3 +1,3 @@
 A:
-MsgBox, You pressed the A button.
+MsgBox, New Message.
 return
